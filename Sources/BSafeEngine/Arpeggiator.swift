@@ -89,6 +89,10 @@ public final class Arpeggiator: @unchecked Sendable {
     private var octaveEffective: Int = 0
     private var repeatSoFar: Int = 0
 
+    /// Octave offsets picked at random when `repeatCount == 8`. Hoisted out
+    /// of ``step()`` so the array literal isn't reallocated on every tick.
+    private static let randomOctaveOffsets: [Int] = [0, 1, 3, 7]
+
     // MARK: - Init
 
     public init() {}
@@ -125,7 +129,7 @@ public final class Arpeggiator: @unchecked Sendable {
         // normally.
         var octaveOffset = 0
         if repeatCount == 8 {
-            octaveOffset = [0, 1, 3, 7].randomElement()!
+            octaveOffset = Self.randomOctaveOffsets.randomElement()!
         } else if repeatCount > 0 {
             if repeatSoFar < repeatCount {
                 repeatSoFar += 1
