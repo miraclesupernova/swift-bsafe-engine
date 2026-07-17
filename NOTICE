@@ -1,0 +1,35 @@
+BSafeEngine
+Copyright (C) 2024-2026 Nicholas Amorim <nicholas@santos.ee>
+
+This library is a Swift port of the DSP layer of the Phonicbloom BSAFE
+(Gecho / MMXX T-APE) ESP32 firmware. The original C/C++ source is
+available from Phonicbloom under its own terms; see:
+    https://github.com/phonicbloom/gecho
+
+The following BSafeEngine files are direct ports (function-for-function
+translations preserving overflow semantics and constants) of the noted
+firmware source files:
+
+    Sources/BSafeEngine/BytebeatSongs.swift   <- main/bytebeat_songs.inc
+    Sources/BSafeEngine/BytebeatEngine.swift  <- main/dsp/Bytebeat.cpp
+    Sources/BSafeEngine/EchoBuffer.swift      <- main/dsp/Bytebeat.cpp
+    Sources/BSafeEngine/StereoMixer.swift     <- main/dsp/Bytebeat.cpp
+    Sources/BSafeEngine/Arpeggiator.swift     <- main/dsp/Bytebeat.cpp
+    Sources/BSafeEngine/StepSequencer.swift   <- main/dsp/Bytebeat.cpp
+    Sources/BSafeEngine/SineWavesEngine.swift <- main/dsp/SineWaves.cpp
+    Sources/BSafeEngine/Wavetables.swift      <- main/dsp/SineWaves.cpp
+    Sources/BSafeEngine/MiniPiano.swift       <- main/dsp/SineWaves.h
+
+The eight built-in bytebeat formulas descend from the "bytebeat"
+tradition originated by Ville-Matias Heikkila (Viznut). See:
+    https://countercomplex.blogspot.com/2011/10/algorithmic-symphonies-from-one-line-of.html
+
+Original firmware attribution:
+    Phonicbloom / Gecho / MMXX T-APE hardware and firmware.
+
+Swift port, tests, packaging:
+    Nicholas Amorim <nicholas@santos.ee>
+
+This distribution is licensed under the GNU Lesser General Public
+License version 3.0 (LGPL-3.0-only). See LICENSE for the full text and
+LICENSE.GPL for the referenced GNU General Public License version 3.0.
